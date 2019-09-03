@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+       <!--加载其他配置文件-->
+       <import resource="classpath:*.xml"/>
+       <!--应用名称-->
+       <dubbo:application name="ego-dubbo"/>
+       <!--注册中心-->
+       <dubbo:registry address="192.168.238.139:2181,192.168.238.139:2182,192.168.238.139:2183" protocol="zookeeper"/>
+       <!--协议-->
+       <dubbo:protocol name="dubbo" port="20880"/>
+       <!--注册服务-->
+       <dubbo:service interface="providerInterface.ItemInterface" ref="itemService"/>
+       <dubbo:service interface="providerInterface.ItemCatInterface" ref="itemCatService"/>
+       <dubbo:service interface="providerInterface.ItemParamInterface" ref="itemParamService"/>
+       <dubbo:service interface="providerInterface.ContentCategoryInterface" ref="contentCategoryService"/>
+       <dubbo:service interface="providerInterface.ContentInterface" ref="contentService"/>
+       <dubbo:service interface="providerInterface.ItemDescInterface" ref="itemDescService"/>
+       <dubbo:service interface="providerInterface.ItemParamItemInterface" ref="itemParamItemService"/>
+       <dubbo:service interface="providerInterface.UserInterFace" ref="userService"/>
+       <dubbo:service interface="providerInterface.OrderInterface" ref="orderService"/>
+
+</beans>

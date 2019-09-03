@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+      <!--注册  单机版solr   HttpSolrServer-->
+       <!--<bean id="httpSolrServer" class="org.apache.solr.client.solrj.impl.HttpSolrServer">
+              <constructor-arg name="baseURL">
+                     <value>${HTTPSOLRSERVER_BASEURL}</value>
+              </constructor-arg>
+       </bean>-->
+       <!--注册solr集群版-->
+       <bean id="cloudSolrServer" class="org.apache.solr.client.solrj.impl.CloudSolrServer">
+              <constructor-arg name="zkHost">
+                     <value>192.168.238.144:2181,192.168.238.144:2182,192.168.238.144:2183</value>
+              </constructor-arg>
+              <property name="defaultCollection" value="collection2"/>
+       </bean>
+</beans>

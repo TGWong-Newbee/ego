@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+       <!--应用名称-->
+       <dubbo:application name="ego-consumer"/>
+       <!--注册中心-->
+       <dubbo:registry address="192.168.238.139:2181,192.168.238.139:2182,192.168.238.139:2183" protocol="zookeeper"/>
+
+       <!--客户端从注册中心下载服务-->
+       <dubbo:reference interface="providerInterface.ItemInterface" id="itemInterface"/>
+       <dubbo:reference interface="providerInterface.ItemCatInterface" id="itemCatInterface"/>
+       <dubbo:reference interface="providerInterface.ItemParamInterface" id="itemParamInterface"/>
+       <dubbo:reference interface="providerInterface.ContentCategoryInterface" id="contentCategoryInterface"/>
+       <dubbo:reference interface="providerInterface.ContentInterface" id="contentInterface"/>
+       <dubbo:reference interface="providerInterface.ItemDescInterface" id="itemDescInterface"/>
+       <dubbo:reference interface="providerInterface.UserInterFace" id="userInterFace"/>
+
+</beans>
